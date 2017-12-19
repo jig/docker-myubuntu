@@ -18,17 +18,10 @@ RUN bash -c "$(wget https://raw.githubusercontent.com/jig/myubuntu/$BRANCH/insta
 RUN apt install -y apt-utils
 # RUN bash -c "$(wget https://raw.githubusercontent.com/jig/myubuntu/$BRANCH/install-docker.sh -O -)"
 # RUN curl -sSL https://get.docker.com/ | sh
-
 RUN apt-get install -y docker.io
-
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-RUN chmod +x ./kubectl
-RUN mv ./kubectl /usr/local/bin/kubectl
-
 RUN curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
 RUN chmod +x kops-linux-amd64
 RUN mv kops-linux-amd64 /usr/local/bin/kops
-
 
 # RUN bash -c "$(wget https://raw.githubusercontent.com/jig/myubuntu/$BRANCH/install-java.sh -O -)"
 # RUN bash -c "$(wget https://raw.githubusercontent.com/jig/myubuntu/$BRANCH/install-chrome.sh -O -)"
